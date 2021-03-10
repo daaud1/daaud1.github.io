@@ -10,8 +10,9 @@ const REGIONS = ["South East", "London", "East of England", "West Midlands", "So
 const UPDATE_BUTTON = document.getElementById("update-location");
 const LOCATION_OPTIONS = document.getElementById("location-options");
 const VIEW_LOCATION_BUTTON = document.getElementById("location-selector");
-const TODAY = new Date().toISOString().slice(0, 10)
+const TODAY = new Date()
 const BIG_AREA_LABEL = document.getElementById("current-area-name")
+const LAST_UPDATED_LABEL = document.getElementById("last-updated");
 var areaType = "overview"; // current area type of data being viewed
 var areaName = null; // current area name of data being viewed
 
@@ -145,10 +146,12 @@ CHART_TYPE.addEventListener("change", () => {
 
 // A function to update the statistics on the page 
 function updateStats(date) { 
-    let filters = (areaType === "overview") ? {"date":date, "areaType":"overview"} : {"date":date, "areaType":areaType, "areaName":areaName}; // URL Encoding for filter parameter, uses parameter of function 
+    let apiDate = date.toISOString().slice(0,10);
+    let filters = (areaType === "overview") ? {"date":apiDate, "areaType":"overview"} : {"date":apiDate, "areaType":areaType, "areaName":areaName}; // URL Encoding for filter parameter, uses parameter of function 
     let datareq = requestAPI(filters, STATS_STRUCT) // API Call, returns a promise
     datareq.then(response => { // Callback Function if Promise Fufilled
         let data = response.data["0"]; // JSON of response
+        LAST_UPDATED_LABEL.innerHTML = apiDate;
 
         // If no data available (error handling)
         for (var label in data) {
@@ -166,6 +169,11 @@ function updateStats(date) {
         DAILY_ADMITS.innerHTML = data["hospitalisations"]["daily"];
         CURRENT_HOS_CASES.innerHTML = data["hospitalisations"]["current"];
     })
+    .catch(() => {
+        const yesterday = new Date(TODAY);
+        yesterday.setDate(yesterday.getDate() - 1);
+        updateStats(yesterday);
+    });
     
 }
 
@@ -178,5 +186,5 @@ function drawChart () {
     })
 }
 
-updateStats("2021-02-08"); // fires on webpage load
+updateStats(TODAY); // fires on webpage load
 drawChart();
