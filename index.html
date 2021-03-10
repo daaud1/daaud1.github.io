@@ -1,1 +1,90 @@
-<h1> Test <\h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="index.js"></script>
+</head>
+<body>
+    <div class="stats-container">
+        <h3 class="light-prelude">Overview</h3>
+        <h2 class="heading"><span id="current-area-name">United Kingdom</span><button id="location-selector"><img src="/resources/caret-down-solid.svg"></button></h2>
+        <h3 class="light-claim">Last updated <span id="last-updated">-</span></h3>
+        <div id="location-options">
+            <h3>Select an Area</h3>
+            <label for="area-type">Area Type</label>
+            <select name="area-type" id="area-type">
+                <option value="overview" selected>United Kingdom</option>
+                <option value="nation">Nation</option>
+                <option value="region">Region</option>
+            </select>
+            <label for="area-name-country" id="nation-label">Nation</label>
+            <select name="area-type-nation" id="area-type-nation">
+                <!-- Javascript Fills -->
+            </select>
+            <label for="area-name-region" id="region-label">Region</label>
+            <select name="area-type-region" id="area-type-region">
+                <!-- Javascript Fills -->
+            </select>
+            <button id="update-location">Update</button>
+        </div>
+        <div id="area-card">    
+            <div class="statistics-card">
+                <h2 class="statistics-header">Cases</h2>
+                <div class="statistic">
+                    <div class="statistic-name">Today</div>
+                    <div class="statistic-value"><div id="daily-cases">-</div></div>
+                </div>
+                <div class="statistic">
+                    <div class="statistic-name">Total</div>
+                    <div class="statistic-value"><div id="total-cases">-</div></div>
+                </div>
+            </div>
+
+            <div class="statistics-card">
+                <h2 class="statistics-header">Deaths</h2>
+                <div class="statistic">
+                    <div class="statistic-name">Today</div>
+                    <div class="statistic-value"><div id="daily-deaths">-</div></div>
+                </div>
+                <div class="statistic">
+                    <div class="statistic-name">Total</div>
+                    <div class="statistic-value"><div id="total-deaths">-</div></div>
+                </div>
+            </div>
+
+            <div class="statistics-card">
+                <h2 class="statistics-header">Hospitalisations</h2>
+                <div class="statistic">
+                    <div class="statistic-name">Daily Admittance</div>
+                    <div class="statistic-value"><div id="daily-admits">-</div></div>
+                </div>
+                <div class="statistic">
+                    <div class="statistic-name">Current Hospital Cases</div>
+                    <div class="statistic-value"><div id="current-admits">-</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stats-container">
+        <h3 class="light-prelude">Data</h3>
+        <h2 class="statistics-header">New <span id="current-chart-data">Cases</span><button id="chart-data-selector"><img src="/resources/caret-down-solid.svg"></button></h2>
+        <div id="chart-options">
+            <h3>Chart Filters</h3>
+            <label for="chart-data-type">Data</label>
+            <select name="chart-data-type" id="chart-data-type">
+                <option value="cases" selected>Cases</option>
+                <option value="deaths">Deaths</option>
+            </select>
+            <label for="chart-data-range">Time range</label>
+            <select name="chart-data-range" id="chart-data-range">
+                <option value="0" selected>All Time</option>
+                <option value="1">Last 7 days</option>
+            </select>
+        </div>
+        <div id="chart-container"></div>
+    </div>
+</body>
+</html>
