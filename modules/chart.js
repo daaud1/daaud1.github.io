@@ -9,7 +9,8 @@ function roundUp(num) {
         return 12
     }
     else {
-        return  (sigNum >= num) ? sigNum : (sigNum + (sigNum / firstDigit))
+        let rounded = (sigNum >= num) ? sigNum : (sigNum + (sigNum / firstDigit))
+        return (rounded % 4 == 0) ? rounded : (rounded + 10);
     }
 }
 
@@ -96,27 +97,10 @@ function barChart(container, data, labelFontSize, time) {
         bar.setAttribute('date', parsedData[coord]["date"]);
         SVG.appendChild(bar);
 
-    //     // bar.addEventListener("mouseover", function( event ) {
-    //     //     console.log("created")
-    //     //     let line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    //     //     line.setAttribute("x1", `${bar.getAttribute("x")}`)
-    //     //     line.setAttribute("x2", `${bar.getAttribute("x")}`)
-    //     //     line.setAttribute("y1",`${CHART_HEIGHT+PADDING -barHeight}`);
-    //     //     line.setAttribute("y2",PADDING);
-    //     //     line.setAttribute('stroke', '#cecece');
-    //     //     line.setAttribute('strokeWidth', '0.5')
-    //     //     line.setAttribute('stroke-dasharray', '5,5');
-            
-    //     //     SVG.appendChild(line);
-    
-    //     // })   
+        bar.addEventListener("click", function() {
+            alert("Date: "+  bar.getAttribute("date") + "\nValue: " + bar.getAttribute("value"));
+        });
     }
-
-    for (let i = 0; i<7; i++) {
-        let indication = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-        let xlabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    }
-
 } 
 
 export {barChart} // to give index.js access
