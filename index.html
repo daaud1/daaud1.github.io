@@ -11,7 +11,7 @@
     <div class="stats-container">
         <h3 class="light-prelude">Overview</h3>
         <h2 class="heading"><span id="current-area-name">United Kingdom</span><button id="location-selector"><img src="/resources/caret-down-solid.svg"></button></h2>
-        <h3 class="light-claim">Last updated <span id="last-updated">-</span></h3>
+        <h3 class="light-claim">Last Updated <span id="last-updated">-</span></h3>
         <div id="location-options">
             <h3>Select an Area</h3>
             <label for="area-type">Area Type</label>
@@ -28,6 +28,8 @@
             <select name="area-type-region" id="area-type-region">
                 <!-- Javascript Fills -->
             </select>
+            <label for="date">Date</label>
+            <input type="date" name="date" id="user-date" min="2020-01-31">
             <button id="update-location">Update</button>
         </div>
         <div id="area-card">    
