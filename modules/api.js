@@ -12,6 +12,7 @@ async function requestAPI (filters, structure) {
     const response = await fetch("https://api.coronavirus.data.gov.uk/v1/data?" + parameter); // API Request
     
     return response.json(); // Return response, parsed as JSON
+
 }
 
 export {requestAPI} // to give index.js access
