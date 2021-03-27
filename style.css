@@ -25,8 +25,12 @@ button {
 
 /* SVG Styling */
 
-rect {
+.bars {
     fill: lightblue;
+}
+
+#chart-psuedo-bg {
+    opacity: 0;
 }
 
 /* Components */
@@ -137,6 +141,13 @@ rect {
     fill: #cecece;
 }
 
+
+#chart-indication {
+    position: absolute;
+    pointer-events: none;
+    fill: #161716;
+    font-weight: bold;
+}
 
 
 /* psuedo effects */
