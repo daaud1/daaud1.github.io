@@ -49,19 +49,19 @@ function toggleOptions(options, button) {
     }
 }
 
-const testData = 
-{"cases": {
-        "daily":null,
-        "total":"500"},
-    "deaths": {
-        "daily": null,
-        "total": "200",
-    },
-    "hospitalisations": {
-        "daily": "200",
-        "current": null
-    }
-}
+// const testData = 
+// {"cases": {
+//         "daily":null,
+//         "total":"500"},
+//     "deaths": {
+//         "daily": null,
+//         "total": "200",
+//     },
+//     "hospitalisations": {
+//         "daily": "200",
+//         "current": null
+//     }
+// }
 
 
 function updateDropDown() {
@@ -166,7 +166,7 @@ function updateStats(date) {
 
     let datareq = requestAPI(filters, STATS_STRUCT) // API Call, returns a promise
     datareq.then(response => { // Callback Function if Promise Fufilled
-        let data = testData //response.data["0"]; // JSON of response
+        let data = response.data["0"]; //response.data["0"]; // JSON of response
         LAST_UPDATED_LABEL.innerHTML = date;
         // If no data available (error handling)
         for (var label in data) {
